@@ -233,9 +233,8 @@ Consider the discretization of the $SU(N_c)$ Yang-Mills theory on a $N_s^3 \time
 where $U_p(x)$ is the standard lattice plaquette
 
 \begin{minipage}{0.4\textwidth}
-    \vspace{1mm}
+    \vspace{2mm}
     \begin{tikzpicture}
-        % Coordinate dei vertici della plaquette
         \coordinate (A) at (0, 0);
         \coordinate (B) at (2, 0);
         \coordinate (C) at (2, 2);
@@ -256,7 +255,7 @@ where $U_p(x)$ is the standard lattice plaquette
         \filldraw (C) circle (2pt) node[above right=-2pt] {$x + \hat{\mu} + a\hat{\nu}$};
         \filldraw (D) circle (2pt) node[above left=-2pt] {$x + a\hat{\nu}$};
     \end{tikzpicture}
-    \vspace{1mm}
+    \vspace{2mm}
 \end{minipage}
 \hspace{-6mm}
 \begin{minipage}{0.6\textwidth}
@@ -267,7 +266,11 @@ where $U_p(x)$ is the standard lattice plaquette
         U^\dagger_{\nu}(x) \, ,
     \end{equation}
 \end{minipage}
-and $\beta=\frac{2N_c}{g^2}$ is the lattice bare gauge coupling. Periodic Boundary Conditions (PBC) are imposed along all directions:
+and $\beta=\frac{2N_c}{g^2}$ is the lattice bare gauge coupling. The corresponding partition function is then given by 
+\begin{equation}\label{eq: Z Wilson}
+    Z = \int [D U] e^{-S_g[U]} \, , \qquad [D U] \equiv \prod_{\tau, \vb*{x}} \left[ \delta U_0(\tau, \vb*{x}) \prod_{i=1}^3 \delta U_i(\tau, \vb*{x}) \right] \, .
+\end{equation}
+Periodic Boundary Conditions (PBC) are imposed along all directions:
 \begin{equation}\label{eq: PBC link}
     \begin{cases}
         \begin{aligned}
@@ -276,10 +279,10 @@ and $\beta=\frac{2N_c}{g^2}$ is the lattice bare gauge coupling. Periodic Bounda
         \end{aligned} \, ,
     \end{cases}  \quad \forall \, \vb*{x}, \tau \, ,
 \end{equation}
-where $\tau$ corresponds to a single time-slice and $\vb*{x}$ is the 3D space coordinate.
+where $\tau$ corresponds to a single time-slice and $\vb*{x}$ is the 3D space coordinate. 
 
 The transfer matrix formalism allows us to link the path-integral representation of the theory to an Hamiltonian formalism. To this end, it is useful to rewrite the Wilson action in Eq. \eqref{eq: Wilson_S} as a sum over time-slices, where the contributions coming from time-like and space-like plaquettes are separated \cite{Montvay:1994cy}
-\begin{equation}
+\begin{equation}\label{eq: action time-slices}
     S_g[U] = \sum_\tau L[U_i(\tau+1), U_0(\tau), U_i(\tau)] \, ,
 \end{equation}
 where $U_i(\tau)$ stands for the spatial links completely contained in time-slice $\tau$ and $U_0(\tau)$ corresponds to the temporal link connecting time-slices $\tau$ and $\tau+1$. The functional $L$ is defined as
@@ -294,10 +297,10 @@ where
     L_1[U_i(\tau+1)] &= -\frac{\beta}{N_c} \sum_{p(\tau)} \Re \Tr U_p \, , \\
     L_2[U_i(\tau+1), U_0(\tau), U_i(\tau)] &= -\frac{\beta}{N_c} \sum_{p(\tau, \tau+1)} \Re \Tr U_p \, ,
 \end{align}
-with $p(\tau)$ being the space-like plaquettes contained in the time slice $\tau$ and $p(\tau, \tau+1)$ the time-like plaquettes connecting time-slices $\tau$ and $\tau+1$. 
+with $p(\tau)$ being the space-like plaquettes contained in the time slice $\tau$ and $p(\tau, \tau+1)$ the time-like plaquettes joining time-slices $\tau$ and $\tau+1$. 
 
 Before we introduce the transfer matrix, recall that the Hilbert space of the theory is the space of all the $L^2$-complex-valued wave functions $\psi[U]$ of the space-like links $U_i(\vb*{x}) \in SU(N_c)$\cite{Della_Morte_2009}. This space is embedded with the following scalar product
-\begin{equation}
+\begin{equation}\label{eq: scalar product}
     \braket{\phi}{\psi} = \int [D U_i] \phi^* [U_i] \psi[U_i] \, , \qquad [D U_i] \equiv \prod_{\vb*{x}} \prod_{i=1}^3 \delta U_i(\vb*{x}) \, .
 \end{equation}
 In order to define the functions $\psi[U]$ on which the transfer matrix $\hat{T}$ will act, a set of vectors $\ket{U}$ that diagonalize the gauge field operator $\hat{U}_i(\vb*{x})$ $\forall \, \vb*{x}$ is introduced:
@@ -308,13 +311,46 @@ these are normalized according to
 \begin{equation}
     \braket{U}{\psi} = \psi[U] \, .
 \end{equation}
-Since $SU(N_c)$ is a (pure) gauge theory, physical states must satisfy a "gauge-invariance condition", namely
+Since $SU(N_c)$ is a (pure) gauge theory, physical states must satisfy a "gauge-invariance condition"
 \begin{equation}
     \psi[U^G] = \psi[U] \, , 
 \end{equation}
-where $U_i^G(\vb*{x}) = G(\vb*{x}) U_i(\vb*{x}) G^\dag(\vb*{x})\, ,$ $\forall \, G(\vb*{x}) \in SU(N_c)$ is the gauge transformed field.
+where $U_i^G(\vb*{x}) = G(\vb*{x}) U_i(\vb*{x}) G^\dag(\vb*{x})\, ,$ $\forall \, G(\vb*{x}) \in SU(N_c)$ is the gauge transformed field. Following \cite{Della_Morte_2009}, we define a projector onto the subspace of gauge-invariant states satisfying
+\begin{equation}
+    \mel{U}{\hat{\mathbb{P}}_G}{\psi} = \int [D G] \psi[U^G] \, , \qquad [D G] \equiv \prod_{\vb*{x}} \delta G(\vb*{x}) \, ,
+\end{equation}
+$\forall \, G(\vb*{x}) \in SU(N_c)$ and of course $\hat{\mathbb{P}}^2_G = \hat{\mathbb{P}}_G$. The transfer matrix acts on wave-functions $\psi[U]$ by translating the corresponding states by a single time-slice:
+\begin{equation}
+    \hat{T} \ket{\psi[U_i(\tau, \vb*{x})]} = \ket{\psi[U_i(\tau+1,\vb*{x})]} \, ;
+\end{equation}
+the matrix elements of $\hat{T}$ between two neighbouring time-slices $\tau$ and $\tau+1$ are defined as
+\begin{equation}\label{eq: T mel}
+    T[U_i(\tau+1), U_i(\tau)] = \int DU_0(\tau) \exp \! \left\{ -L[U_i(\tau+1), U_0(\tau), U_i(\tau)] \right\} \, .
+\end{equation}
+Note that the transfer matrix, by definition, evolves a state with a time step $a$ hence we can write $\hat{T} = e^{-a \hat{H}}$. Consider now the partition function \eqref{eq: Z Wilson}: from the measure in relation \eqref{eq: scalar product}, it follows that $[D U] = \prod_{\tau=0}^{N_T-1} [D U_0(\tau)] [D U_i(\tau)]$ so
+\begin{align}
+    Z &= \int \prod_{\tau=0}^{N_T-1} [D U_0(\tau)] [D U_i(\tau)] e^{-S_g[U]} \, , \\
+    &= \int \prod_{\tau=0}^{N_T-1} [D U_0(\tau)] [D U_i(\tau)] \exp \! \left\{ - \sum_\tau L[U_i(\tau+1), U_0(\tau), U_i(\tau)] \right\} \, , \\
+    &= \int \prod_{\tau=0}^{N_T-1} [D U_i(\tau)] T[U_i(\tau+1), U_i(\tau)] \, , \\
+    &= \Tr \! \left\{ \hat{T}^{N_T} \right\} \, ,
+\end{align}
+where $N_T$ corresponds to the number of time-slices in the lattice and Eqs. \eqref{eq: action time-slices} and \eqref{eq: T mel} have been inserted in intermediate steps. Conversely, to see that $Z = \Tr \! \left\{ \hat{T}^{N_T} \right\}$, we can explicitly expand the trace 
+\begin{equation}
+    \Tr \! \left\{ \hat{T}^{N_T} \right\} = \int [DU_i(N_T)] \mel{U_i(N_T, \vb*{x})}{\hat{T}^{N_T}}{U_i(N_T, \vb*{x})} \, ;
+\end{equation}
+inserting $N_T-1$ completness relations of the form $\mathbb{1} = \int [DU_i(\tau')] \ketbra{U_i(\tau', \vb*{x})}{U_i(\tau', \vb*{x})}$ in between each $\hat{T}$ ($\tau' = N_T-1, \ldots, 1$) and using PBC on the last state ($\ket{U_i(N_T, \vb*{x})} = \ket{U_i(0, \vb*{x})}$) leads to 
+\begin{align}
+    \Tr \! \left\{ \hat{T}^{N_T} \right\} &= \int [DU_i(N_T)] \cdots [DU_i(1)] \mel{U_i(N_T, \vb*{x})}{\hat{T}}{U_i(N_T-1, \vb*{x})} \times \\
+    &\qquad \qquad \qquad \cdots \mel{U_i(1, \vb*{x})}{\hat{T}}{U_i(0, \vb*{x})} \, , \\
+    &=  \int \prod_{\tau'=0}^{N_T-1} [D U_i(\tau')] T[U_i(\tau'), U_i(\tau'-1)] = Z \, .
+\end{align}
+Notice that PBC are crucial for recostructing the trace. 
 
-
+With regard to numerical computations, in general the gauge fixing procedure is not required for a Monte Carlo (MC) estimation of an integral over gauge configurations of the form $\int [D U] f[U]$. Indeed, thanks to the lattice regularization, the theory is already finite and well-defined without choosing any particular gauge. Furthermore, gauge fixing introduces long-range interactions which are not well simulated by a local MC algorithm: even if the final results are gauge independent and must not change when fixing the gauge, the computational performance can be significantly slower (see e.g. \cite{Creutz:1980zw,Vladikas:1985uv}). Eventually, one can show \cite{Della_Morte_2009} that the transfer matrix elemnts are gauge invariant, i.e. 
+\begin{equation}
+    T[U(\tau+1), U(\tau)] = T[U^{G'}(\tau+1), U^G(\tau)] \, , \quad \Rightarrow \quad Z = \Tr \! \left\{ \left[ \hat{T} \hat{\mathbb{P}}_G \right]^{N_T} \right\} \, ,
+\end{equation}
+meaning that there is no need to choose a gauge on the lattice. 
 
 
 
