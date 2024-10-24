@@ -216,7 +216,7 @@ yields to the well known result for the pressure of a free gluons gas:
     p = 2(N_c^2 - 1) \frac{\pi^2 T^4}{90} \, .
 \end{equation}
 
-In perturbation theory, it is the standard approach (although there are some exceptions \cite{Parisi:1980ys}) to reinforce a gauge-fixing procedure: this introduces new gluon-ghost vertices
+In perturbation theory, it is the standard approach (although there are some exceptions, see e.g. \cite{Parisi:1980ys}) to reinforce a gauge-fixing procedure: this introduces new gluon-ghost vertices
 into the game, hence presumibly a perturbative computation of the gluonic pressure would lead to the correct result we just showed.
 
 
@@ -305,7 +305,7 @@ Before we introduce the transfer matrix, following \cite{Della_Morte_2009} we ca
 \end{equation}
 In order to define the functions $\psi[U]$ on which the transfer matrix $\hat{T}$ will act, a set of vectors $\ket{U}$ that diagonalize the gauge field operator $\hat{U}_i(\vb*{x})$ $\forall \, \vb*{x}$ is introduced:
 \begin{equation}
-    \hat{U}_i(\vb*{x}) \ket{U} = U_i(\vb*{x}) \ket{U} \, ;
+    \hat{U}_i(\vb*{x}) \ket{U} = U_i(\vb*{x}) \ket{U} \, ,
 \end{equation}
 with the following normalization
 \begin{equation}
@@ -313,7 +313,7 @@ with the following normalization
 \end{equation}
 Physical states in a gauge theory must satisfy a gauge invariance condition, for instance here we require
 \begin{equation}
-    \psi[U^G] = \psi[U] \hspace{5mm} \forall \, G(\vb*{x}) \in \mathrm{SU}(N_c), 
+    \psi[U^G] = \psi[U] \, , \hspace{5mm} \forall \, G(\vb*{x}) \in \mathrm{SU}(N_c) \, , 
 \end{equation}
 where $U^G(\vb*{x}) = G(\vb*{x}) U(\vb*{x}) G^\dag(\vb*{x})$ is a gauge transformed field. It is also useful to define a projector onto the subspace of gauge-invariant states, namely
 \begin{equation}
@@ -329,7 +329,7 @@ and the matrix elements of $\hat{T}$ between two neighbouring time-slices $\tau$
 \end{equation}
 Note that the transfer matrix, by definition, evolves a state by a time step $a$, hence we can write $\hat{T} = e^{-a \hat{H}}$. 
 With this setup, we can now show how the partition function is related to the transfer matrix. Recall the expression for $Z$ given in 
-\eqref{eq: Z Wilson} and write the integration measure explicitly as $[D U] = \prod_{\tau=0}^{N_T-1} [D U_0(\tau)] [D U_i(\tau)]$, it follows that
+\eqref{eq: Z Wilson} and write the integration measure explicitly as $[D U] = \prod_{\tau=0}^{N_T-1} [D U_0(\tau)] [D U_i(\tau)]$; then it follows that
 \begin{align}
     Z &= \int \prod_{\tau=0}^{N_T-1} [D U_0(\tau)] [D U_i(\tau)] e^{-S_g[U]} \, , \\
     &= \int \prod_{\tau=0}^{N_T-1} [D U_0(\tau)] [D U_i(\tau)] \exp \! \left\{ - \sum_\tau L[U_i(\tau+1), U_0(\tau), U_i(\tau)] \right\} \, , \\
@@ -337,7 +337,7 @@ With this setup, we can now show how the partition function is related to the tr
     &= \Tr \! \left\{ \hat{T}^{N_T} \right\} \, ,
 \end{align}
 where $N_T$ corresponds to the number of time-slices in the lattice and Eqs. \eqref{eq: action time-slices} and \eqref{eq: T mel} have been inserted in intermediate steps. 
-We can also recover this relation the other way around. Expand the trace of $\hat{T}^{N_T}$ over a complete set of states, for instance
+We can also recover this relation the other way around. Let's expand the trace of $\hat{T}^{N_T}$ over a complete set of states, for instance
 \begin{equation}
     \Tr \! \left\{ \hat{T}^{N_T} \right\} = \int [DU_i(N_T)] \mel{U_i(N_T, \vb*{x})}{\hat{T}^{N_T}}{U_i(N_T, \vb*{x})} \, ;
 \end{equation}
